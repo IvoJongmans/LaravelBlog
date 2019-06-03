@@ -10,7 +10,7 @@
             <input type="text" name="blog_title" placeholder="Title">
         </div>
         <div>
-            <textarea name="blog_body" placeholder="Body"></textarea>
+            <textarea name="blog_body"></textarea>
         </div>
         <div>
             <button type="submit">CREATE!</button>
