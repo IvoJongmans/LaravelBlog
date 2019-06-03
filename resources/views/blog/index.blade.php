@@ -11,7 +11,7 @@
 <div>
     <h2>{{$blog->blog_title}}</h2>
 
-    <p>{{$blog->blog_body}}</p>
+    <p>{!!$blog->blog_body!!}</p>
 
     <p>{{$blog->created_at}}</p>
 

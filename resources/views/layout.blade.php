@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
+  <script>tinymce.init({selector:'textarea'});</script>
 </head>
 <body>
     @yield('content')
