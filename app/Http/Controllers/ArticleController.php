@@ -39,14 +39,24 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
       
-        $attributes = request()->validate([
-            'blog_title' => ['required', 'min:3'],
-            'blog_body' => ['required', 'min:3'],            
-        ]);
-        
-       Article::create($attributes);
+    $attributes = request()->validate([
+        'blog_title' => ['required', 'min:3'],
+        'blog_body' => ['required', 'min:3'],  
+        'blog-image' => ['']         
+    ]);
 
-       return redirect('/blog');
+    $file = $request->file('blog_image');
+    $destinationPath = 'img/';
+    $originalFile = $file->getClientOriginalName();
+    $file->move($destinationPath, $originalFile);
+
+    //    $path = $request->blog_image_path->store('blog_images');
+
+    $attributes += ['blog_image' => $originalFile];
+
+    Article::create($attributes);      
+
+    return redirect('/blog');  
 
     }
 

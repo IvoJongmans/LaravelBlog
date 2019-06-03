@@ -3,7 +3,7 @@
 @section('content')
     <h1>Create a blog entry!</h1>
 
-    <form method="POST" action="/blog">
+    <form method="POST" action="/blog" enctype="multipart/form-data">
         @csrf
 
         <div>
@@ -11,6 +11,9 @@
         </div>
         <div>
             <textarea name="blog_body"></textarea>
+        </div>
+        <div>
+            <input type="file" name="blog_image">
         </div>
         <div>
             <button type="submit">CREATE!</button>
