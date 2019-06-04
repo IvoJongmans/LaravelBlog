@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if(auth()->user()->id == 1)
+
+    YOLO
+
+@endif
+
 <div class="container">
 
 <h1 class="text-center">Welcome to our blog!</h1>
