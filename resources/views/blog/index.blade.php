@@ -15,9 +15,7 @@
 
     <p>{!!$blog->blog_body!!}</p>
 
-    {{$blog->blog_image}}
-
-    <img src="{{ asset('img/'.$blog->blog_image) }}" id="Image" name="Image" />
+    <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;">
 
     <p>{{$blog->created_at}}</p>
 

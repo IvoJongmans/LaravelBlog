@@ -41,8 +41,7 @@ class ArticleController extends Controller
       
     $attributes = request()->validate([
         'blog_title' => ['required', 'min:3'],
-        'blog_body' => ['required', 'min:3'],  
-        'blog-image' => ['']         
+        'blog_body' => ['required', 'min:3'],           
     ]);
 
     $file = $request->file('blog_image');
