@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::resource('/article', 'ArticleController');
 Route::post('/article/{article}/comment', 'CommentController@store');
+Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy');
 
 Auth::routes();
 

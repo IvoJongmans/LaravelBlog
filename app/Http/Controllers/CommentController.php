@@ -92,8 +92,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Article $article, Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return back();
     }
 }

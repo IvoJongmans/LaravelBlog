@@ -4,7 +4,7 @@
 
 @if(auth()->user()->id == 1)
 
-    YOLO
+<a href="article/create"><button type="button">CREATE ENTRY</button></a>
 
 @endif
 
@@ -12,7 +12,7 @@
 
 <h1 class="text-center">Welcome to our blog!</h1>
 
-<a href="article/create"><button type="button">CREATE ENTRY</button></a>
+
 
 @foreach($allBlogs as $blog)
 

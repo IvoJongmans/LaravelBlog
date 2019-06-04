@@ -26,7 +26,19 @@
 
     @foreach($article->comments as $comment)
 
-        <li style="padding:25px;list-style-type:none;border-top:3px solid black;">{!!$comment->blog_comment!!}</li>
+        <li style="padding:25px;list-style-type:none;border-top:3px solid black;">{!!$comment->blog_comment!!}
+        
+        @if(auth()->user()->id == 1)
+
+        <form method="POST" action="/article/{{$article->id}}/comment/{{$comment->id}}">
+            @csrf
+            @method("DELETE")
+            <button type="submit">DELETE COMMENT</button>
+        </form>
+        
+        @endif
+        
+        </li>
 
     @endforeach
     @elseif (count($article->comments) == 0)
@@ -43,9 +55,6 @@
     <div>
         <textarea name="blog_comment"></textarea>        
     </div>
-    {{-- <div>
-        <input type="hidden" name="article_id" value="{{$article->id}}">
-    </div> --}}
     <div>
         <button type="submit">Add Comment</button>        
     </div>
