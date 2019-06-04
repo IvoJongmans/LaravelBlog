@@ -6,9 +6,13 @@
 
 <h2>{{$article->blog_title}}</h2>
 
+<a href="/article"><button>Back To Home</button></a>
+
 <p>{!!$article->blog_body!!}</p>
 
-<img src="{{ asset('img/'.$article->blog_image) }}" style="max-width:200px;">
+<div class="text-center">
+    <img src="{{ asset('img/'.$article->blog_image) }}" style="max-width:200px;">
+</div>
 
 <p>{{$article->created_at}}</p>
 
@@ -16,18 +20,20 @@
 
 <div class="container">
 
-    Comments:
+    @if(count($article->comments) >= 1)
+       
+        <h2>Comments:</h2>
 
     @foreach($article->comments as $comment)
 
-        <li>{!!$comment->blog_comment!!}</li>
-        <script>
-        var z = <?php echo($comment->blog_comment) ?>
-        console.log(z);
-        </script>
-
+        <li style="padding:25px;list-style-type:none;border-top:3px solid black;">{!!$comment->blog_comment!!}</li>
 
     @endforeach
+    @elseif (count($article->comments) == 0)
+
+        <h2>Be the first to comment!</h2>
+
+    @endif
 
 </div>
 

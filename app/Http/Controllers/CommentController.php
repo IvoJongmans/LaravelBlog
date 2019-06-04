@@ -42,14 +42,14 @@ class CommentController extends Controller
         foreach($tags as $tag){
             $string = preg_replace("/<\\/?" . $tag . "(.|\\s)*?>/", "", $string);
         }   
-            
+
         $article_id = $article->id;
         $attributes = ['article_id' => $article_id, 
                         'blog_comment' => $string];
 
         Comment::create($attributes);
 
-        return redirect('/article/'.$article_id);
+        return back();
     }
 
     /**
