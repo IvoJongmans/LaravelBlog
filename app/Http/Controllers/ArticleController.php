@@ -17,7 +17,7 @@ class ArticleController extends Controller
 
         $allBlogs = Article::all()->sortByDesc('created_at');
 
-        return view('blog.index', compact('allBlogs'));
+        return view('article.index', compact('allBlogs'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('blog.create_blog');
+        return view('article.create_blog');
     }
 
     /**
@@ -55,7 +55,7 @@ class ArticleController extends Controller
 
     Article::create($attributes);      
 
-    return redirect('/blog');  
+    return redirect('/article');  
 
     }
 
@@ -67,7 +67,8 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        
+        return view('article.show', compact('article'));
     }
 
     /**

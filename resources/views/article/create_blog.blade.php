@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Create a blog entry!</h1>
 
-    <form method="POST" action="/blog" enctype="multipart/form-data">
+    <form method="POST" action="/article" enctype="multipart/form-data">
         @csrf
 
         <div>

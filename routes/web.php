@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/blog', 'ArticleController');
+Route::resource('/article', 'ArticleController');
+Route::post('/article/{article}/comment', 'CommentController@store');
