@@ -17,6 +17,12 @@
             <input type="file" name="blog_image">
         </div>
         <div>
+            <p>Allow Comments? Y/N</p>
+
+            No: <input type="radio" name="blog_allow_comments" value="0">
+            Yes: <input type="radio" name="blog_allow_comments" value="1">
+        </div>
+        <div>
             <button type="submit">CREATE!</button>
         </div>
     </form>
