@@ -21,7 +21,10 @@
     @foreach($article->comments as $comment)
 
         <li>{!!$comment->blog_comment!!}</li>
-
+        <script>
+        var z = <?php echo($comment->blog_comment) ?>
+        console.log(z);
+        </script>
 
 
     @endforeach

@@ -37,11 +37,15 @@ class CommentController extends Controller
     public function store(Request $request, Article $article)
     {
           
-       
+        $string = $request->blog_comment;
+        $tags = array("p");
+        foreach($tags as $tag){
+            $string = preg_replace("/<\\/?" . $tag . "(.|\\s)*?>/", "", $string);
+        }   
+            
         $article_id = $article->id;
-        $blog_comment = $request->blog_comment;
         $attributes = ['article_id' => $article_id, 
-                        'blog_comment' => $blog_comment];
+                        'blog_comment' => $string];
 
         Comment::create($attributes);
 
