@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Route::resource('/article', 'ArticleController');
 Route::post('/article/{article}/comment', 'CommentController@store');
-Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy');
+Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy')->middleware('auth');
+Route::get('/search', 'SearchController@index');
 
 Auth::routes();
 

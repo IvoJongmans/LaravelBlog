@@ -18,6 +18,8 @@
 
 </div>
 
+@if($article->blog_allow_comments === 1)
+
 <div class="container">
 
     @if(count($article->comments) >= 1)
@@ -45,9 +47,9 @@
 
         <h2>Be the first to comment!</h2>
 
-    @endif
-
 </div>
+
+@endif
 
 <div class="container">
     <form action="/article/{{$article->id}}/comment" method="POST">
@@ -64,6 +66,8 @@
 <div style="height:100px;">
 
 </div>
+
+@endif
 
 
     

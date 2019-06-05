@@ -13,6 +13,15 @@
 <h1 class="text-center">Welcome to our blog!</h1>
 
 
+    
+        <div class="text-center">
+            <form action="search" method="GET">
+                <input type="text" name="search_input" placeholder="Search...">
+                <button type="submit">Search!</button>
+            </form>
+        </div>
+    
+
 
 @foreach($allBlogs as $blog)
 
