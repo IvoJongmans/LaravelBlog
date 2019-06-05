@@ -45,6 +45,7 @@
     </script>
 </head>
 <body>
+        <a href="{{ url('/logout') }}"> logout </a>
     @yield('content')
 </body>
 </html>

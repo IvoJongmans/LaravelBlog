@@ -92,7 +92,12 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article_update = Article::find($article->id);
+
+        $article_update->update(request(['blog_title', 'blog_body']));
+
+
+        return redirect('article/'.$article->id);
     }
 
     /**

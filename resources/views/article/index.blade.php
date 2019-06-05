@@ -12,29 +12,47 @@
 
 <h1 class="text-center">Welcome to our blog!</h1>
 
+</div>
 
-    
+<div class="container">    
         <div class="text-center">
             <form action="search" method="GET">
                 <input type="text" name="search_input" placeholder="Search...">
                 <button type="submit">Search!</button>
             </form>
-        </div>
-    
+        </div>    
+</div>
 
 
 @foreach($allBlogs as $blog)
 
-<div>
-<a href="article/{{$blog->id}}"><h2 class="text-center">{{$blog->blog_title}}</h2></a>
-
-    <p>{!!$blog->blog_body!!}</p>
-
-    <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;">
-
-    <p>{{$blog->created_at}}</p>
-
+<div class="container">
+    <div class="row">
+        <a href="article/{{$blog->id}}"><h2>{{$blog->blog_title}}</h2></a>
+    </div>
 </div>
+
+
+
+    <div class="container">
+        <div class="row">
+
+        <div class="col-sm-12">
+            <div class="pull-left">
+                {!!$blog->blog_body!!}
+            </div>
+            
+            <div class="pull-left">
+                <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;">
+            </div>
+        </div>
+
+        </div>
+    </div>
+    
+
+    
+
 
 @endforeach
 
