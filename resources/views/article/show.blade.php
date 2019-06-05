@@ -8,6 +8,13 @@
 
 <a href="/article"><button>Back To Home</button></a>
 
+@if(auth()->user()->id == 1)
+
+    <a href="/article/{{$article->id}}/edit"><button>EDIT</button></a>
+
+@endif
+
+
 <p>{!!$article->blog_body!!}</p>
 
 <div class="text-center">

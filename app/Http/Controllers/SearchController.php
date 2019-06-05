@@ -9,8 +9,9 @@ class SearchController extends Controller
 {
     public function index(){
         $search = request('search_input');
-        $search_results = Article::all()->where('blog_title', '=', $search);
-        return view('article.search', compact('search_results'));
-
+        // $search = "12%";
+        $allBlogs = Article::where('blog_title', 'LIKE', '%'. $search . '%')->get();
+        return view('article.index', compact('allBlogs'));
+        // return $search_results;
     }
 }
