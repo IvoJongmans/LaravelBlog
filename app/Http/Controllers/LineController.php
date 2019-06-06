@@ -17,6 +17,11 @@ class LineController extends Controller
     public function eventx(Request $request) {
 
 
+        $output = new \Symfony\Component\Console\Output\ConsoleOutput(2);
+
+$output->writeln('hello');
+
+
      
 	// log body and signature
          file_put_contents('php://stderr', 'aap');
