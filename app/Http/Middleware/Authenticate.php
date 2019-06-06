@@ -12,6 +12,15 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {

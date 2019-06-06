@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // Route::group(['middleware' => ['guest']], function () {
     //only guests can access these routes
-    Route::post('/linehook', 'LineController@eventx')->middleware('guest');
+    Route::post('/linehook', 'LineController@eventx');
 
 // });
 
