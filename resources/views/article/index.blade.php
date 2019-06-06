@@ -14,6 +14,31 @@
 
 </div>
 
+<div class="container" style="padding:50px;">
+
+    <div class="row">
+        <div class="col-sm-4">
+            <form action="category" method="GET">
+                <input type="hidden" name="category_input" value="sport">
+                <button type="submit">#Sports</button>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <form action="category" method="GET">
+                <input type="hidden" name="category_input" value="food">
+                <button type="submit">#Food</button>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <form action="category" method="GET">
+                <input type="hidden" name="category_input" value="leisure">
+                <button type="submit">#Leisure</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
 <div class="container">    
         <div class="text-center">
             <form action="search" method="GET">

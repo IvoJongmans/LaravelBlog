@@ -23,6 +23,13 @@
             Yes: <input type="radio" name="blog_allow_comments" value="1">
         </div>
         <div>
+            <p>Category: </p>
+
+            Sport: <input type="radio" name="blog_category" value="sport">
+            Food: <input type="radio" name="blog_category" value="food">
+            Leisure <input type="radio" name="blog_category" value="leisure">
+        </div>
+        <div>
             <button type="submit">CREATE!</button>
         </div>
     </form>

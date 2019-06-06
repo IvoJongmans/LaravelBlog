@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('blog_body');
             $table->text('blog_image');
             $table->integer('blog_allow_comments');
+            $table->text('blog_category');
             $table->timestamps();
         });
     }
