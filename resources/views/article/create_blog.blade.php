@@ -25,9 +25,9 @@
         <div>
             <p>Category: </p>
 
-            Sport: <input type="radio" name="blog_category" value="sport">
-            Food: <input type="radio" name="blog_category" value="food">
-            Leisure <input type="radio" name="blog_category" value="leisure">
+            <input type="checkbox" name="categories[]" value="sport">Sport
+            <input type="checkbox" name="categories[]" value="food">Food
+            <input type="checkbox" name="categories[]" value="leisure">Leisure
         </div>
         <div>
             <button type="submit">CREATE!</button>

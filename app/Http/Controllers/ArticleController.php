@@ -42,9 +42,11 @@ class ArticleController extends Controller
     $attributes = request()->validate([
         'blog_title' => ['required', 'min:3'],
         'blog_body' => ['required', 'min:3'],  
-        'blog_allow_comments' => ['required'],
-        'blog_category' => ['required']        
+        'blog_allow_comments' => ['required']       
     ]);
+
+    $categories =  $request->input('categories'); 
+    $categoriesstring = implode(",",$categories);
 
     $file = $request->file('blog_image');
     $destinationPath = 'img/';
@@ -53,7 +55,8 @@ class ArticleController extends Controller
 
     //    $path = $request->blog_image_path->store('blog_images');
 
-    $attributes += ['blog_image' => $originalFile];
+    $attributes += ['blog_image' => $originalFile,
+                    'categories' => $categoriesstring];
 
     Article::create($attributes);      
 

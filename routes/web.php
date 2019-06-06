@@ -22,7 +22,7 @@ Route::post('/linehook', 'LineController@event');
 
 Route::resource('/article', 'ArticleController');
 Route::post('/article/{article}/comment', 'CommentController@store');
-Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy')->middleware('auth');
+Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy');
 Route::get('/search', 'SearchController@index');
 Route::get('/category', 'CategoryController@index');
 

@@ -14,10 +14,7 @@ class Authenticate extends Middleware
      */
 
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
 
     

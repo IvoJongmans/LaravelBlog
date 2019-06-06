@@ -19,20 +19,19 @@
     <div class="row">
         <div class="col-sm-4">
             <form action="category" method="GET">
-                <input type="hidden" name="category_input" value="sport">
-                <button type="submit">#Sports</button>
-            </form>
+                <input type="checkbox" name="categories[]" value="sport">
+                Sport
+            
         </div>
         <div class="col-sm-4">
-            <form action="category" method="GET">
-                <input type="hidden" name="category_input" value="food">
-                <button type="submit">#Food</button>
-            </form>
+            
+            <input type="checkbox" name="categories[]" value="food">
+            Food
         </div>
         <div class="col-sm-4">
-            <form action="category" method="GET">
-                <input type="hidden" name="category_input" value="leisure">
-                <button type="submit">#Leisure</button>
+            
+            <input type="checkbox" name="categories[]" value="leisure">
+            Leisure
             </form>
         </div>
     </div>
