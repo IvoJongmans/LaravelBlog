@@ -50,7 +50,7 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
             $message ="";
             $rows = Article::all();
             foreach ($rows as $row) {
-                $message = $message . $row->blog_title;
+                $message = $message . $row->blog_title . '\n';
             };
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
