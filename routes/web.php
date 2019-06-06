@@ -15,11 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::group(['middleware' => ['guest']], function () {
-    //only guests can access these routes
-    Route::post('/linehook', 'LineController@eventx');
 
-// });
+Route::post('/linehook', 'LineController@event');
+
 
 
 Route::resource('/article', 'ArticleController');
