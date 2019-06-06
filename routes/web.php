@@ -28,3 +28,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //logout Route that I use in layout.blade.php
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::post('/linehook', 'Linecontroller@event');
+
