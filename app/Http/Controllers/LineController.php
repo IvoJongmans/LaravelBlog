@@ -44,8 +44,13 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
 		}
 
 
-	   if(strtolower($userMessage) == 'afspraak')
+	   if(strtolower($userMessage) == 'blog')
 		{
+            $message ="";
+            $rows = Article::all();
+            foreach ($rows as $row) {
+                $message = $message . $row->blog_title . "\n";
+            }
 			$message = "Kun je vanmiddag om 15:00 ?";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
