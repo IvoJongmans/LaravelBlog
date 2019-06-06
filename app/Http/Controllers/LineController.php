@@ -50,12 +50,10 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
             $rows = Article::all();
             foreach ($rows as $row) {
                 $message = $message . $row->blog_title;
-            }
-			$message = "Kun je vanmiddag om 15:00 ?";
+            };
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();		
 		}
 
 
