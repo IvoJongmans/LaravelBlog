@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::group(['middleware' => ['guest']], function () {
+    //only guests can access these routes
+    Route::post('/linehook', 'LineController@eventx')->middleware('guest');
+
+// });
+
+
 Route::resource('/article', 'ArticleController');
 Route::post('/article/{article}/comment', 'CommentController@store');
 Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy')->middleware('auth');
@@ -28,5 +35,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //logout Route that I use in layout.blade.php
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::post('/linehook', 'Linecontroller@event');
+
 
