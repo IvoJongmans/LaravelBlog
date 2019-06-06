@@ -9,7 +9,12 @@ class LineController extends Controller
 {
     public function eventx(Request $request) {
 
+
+        
+	// log body and signature
+	file_put_contents('php://stderr', 'aap');
         return $request;
+        
         // // First we fetch the Request instance
         // $request = Request::instance();
 
