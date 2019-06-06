@@ -49,7 +49,7 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
             $message ="";
             $rows = Article::all();
             foreach ($rows as $row) {
-                $message = $message . $row->blog_title . "\n";
+                $message = $message . $row->blog_title;
             }
 			$message = "Kun je vanmiddag om 15:00 ?";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
