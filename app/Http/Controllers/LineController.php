@@ -47,11 +47,11 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
 
 	   if(strtolower($userMessage) == 'blog')
 		{
-            $message ="cdwvfwvfweew";
-            // $rows = Article::all();
-            // foreach ($rows as $row) {
-            //     $message = $message . $row->blog_title;
-            // };
+            $message ="";
+            $rows = Article::all();
+            foreach ($rows as $row) {
+                $message = $message . $row->blog_title;
+            };
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();		
