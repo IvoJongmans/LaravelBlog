@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Article;
 use Illuminate\Http\Request;
 
@@ -38,15 +39,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+    //code for making a new article
       
     $attributes = request()->validate([
         'blog_title' => ['required', 'min:3'],
         'blog_body' => ['required', 'min:3'],  
         'blog_allow_comments' => ['required']       
     ]);
-
-    $categories =  $request->input('categories'); 
-    $categoriesstring = implode(",",$categories);
 
     $file = $request->file('blog_image');
     $destinationPath = 'img/';
@@ -55,10 +55,29 @@ class ArticleController extends Controller
 
     //    $path = $request->blog_image_path->store('blog_images');
 
-    $attributes += ['blog_image' => $originalFile,
-                    'categories' => $categoriesstring];
+    $attributes += ['blog_image' => $originalFile];
 
-    Article::create($attributes);      
+
+    $catId = Article::create($attributes);  
+
+   
+
+    $catarr = $request->categories;
+
+
+        $catatt = ['article_id' => $catId->id];
+
+        if (in_array("sport", $catarr)) {
+            $catatt +=['sport' => 1];
+        }
+        if (in_array("food", $catarr)) {
+            $catatt +=['food' => 1];
+        }
+        if (in_array("leisure", $catarr)) {
+            $catatt +=['leisure' => 1];
+        }
+
+    Category::create($catatt);
 
     return redirect('/article');  
 
