@@ -48,10 +48,10 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
 	   if(strtolower($userMessage) == 'blog')
 		{
             $message ="";
-            $rows = Article::all();
-            foreach ($rows as $row) {
-                $message = 'https://boiling-caverns-25543.herokuapp.com/';
-            };
+            $rows = Article::all()->sortByDesc('created_at');
+            for($i = 0; $i < 3; $i++){
+				$message += 'https://boiling-caverns-25543.herokuapp.com/' . $rows[i]->id;
+			};
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();		
