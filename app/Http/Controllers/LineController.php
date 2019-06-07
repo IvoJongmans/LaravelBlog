@@ -49,9 +49,9 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
 		{
             $message ="";
             $rows = Article::all()->sortByDesc('created_at');
-            for($i = 0; $i < 3; $i++){
-				$message += 'https://boiling-caverns-25543.herokuapp.com/' . $rows[i]->id;
-			};
+            foreach ($rows as $row) {
+                $message += $row->id;
+            };
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();		
