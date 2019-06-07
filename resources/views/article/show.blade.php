@@ -8,11 +8,11 @@
 
 <a href="/article"><button>Back To Home</button></a>
 
-@if(auth()->user()->id == 1)
+{{-- @if(auth()->user()->id == 1) --}}
 
     <a href="/article/{{$article->id}}/edit"><button>EDIT</button></a>
 
-@endif
+{{-- @endif --}}
 
 
 <p>{!!$article->blog_body!!}</p>
@@ -37,7 +37,7 @@
 
         <li style="padding:25px;list-style-type:none;border-top:3px solid black;">{!!$comment->blog_comment!!}
         
-        @if(auth()->user()->id == 1)
+        {{-- @if(auth()->user()->id == 1) --}}
 
         <form method="POST" action="/article/{{$article->id}}/comment/{{$comment->id}}">
             @csrf
@@ -45,7 +45,7 @@
             <button type="submit">DELETE COMMENT</button>
         </form>
         
-        @endif
+        {{-- @endif --}}
         
         </li>
 

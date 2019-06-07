@@ -2,11 +2,11 @@
 
 @section('content')
 
-@if(auth()->user()->id == 1)
+{{-- @if(auth()->user()->id == 1) --}}
 
 <a href="article/create"><button type="button">CREATE ENTRY</button></a>
 
-@endif
+{{-- @endif --}}
 
 <div class="container">
 

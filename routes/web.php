@@ -20,7 +20,7 @@ Route::post('/linehook', 'LineController@event');
 
 
 
-Route::resource('/article', 'ArticleController');
+Route::resource('/article', 'ArticleController')->middleware('guest');
 Route::post('/article/{article}/comment', 'CommentController@store');
 Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy');
 Route::get('/search', 'SearchController@index');
