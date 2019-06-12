@@ -40,6 +40,24 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="blogger" class="col-md-4 col-form-label text-md-right">{{ __('Blogger') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="blogger" type="radio" class="form-control"  name="usertype" value="blogger" checked>
+                                
+
+                            </div>
+
+                            <label for="blogger" class="col-md-4 col-form-label text-md-right">{{ __('Reader') }}</label>
+                            <div class="col-md-6">
+                                
+                                <input id="reader" type="radio" class="form-control"  name="usertype" value="reader" >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

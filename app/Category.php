@@ -7,9 +7,10 @@ use App\Article;
 
 class Category extends Model
 {
-    protected $fillable = ['article_id', 'sport', 'food', 'leisure'];
+    protected $fillable = ['title'];
     
-    public function article() {
-        return $this->belongsTo(Article::class);
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class);
     }
 }

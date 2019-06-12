@@ -19,16 +19,18 @@
         <div>
             <p>Allow Comments? Y/N</p>
 
-            No: <input type="radio" name="blog_allow_comments" value="0">
+            No: <input type="radio" name="blog_allow_comments" value="0" checked>
             Yes: <input type="radio" name="blog_allow_comments" value="1">
         </div>
-        <div>
-            <p>Category: </p>
-
-            <input type="checkbox" name="categories[]" value="sport">Sport
-            <input type="checkbox" name="categories[]" value="food">Food
-            <input type="checkbox" name="categories[]" value="leisure">Leisure
+        @foreach($allCategories as $category)
+        <div class="col-sm-4 text-center">
+            
+        <input type="checkbox" name="categories[]" value="{{$category->id}}">
+                {{$category->title}}
+                {{-- Sport({{$allSportsCount}}) --}}
+            
         </div>
+        @endforeach
         <div>
             <button type="submit">CREATE!</button>
         </div>

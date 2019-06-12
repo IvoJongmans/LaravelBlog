@@ -15,15 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::post('/linehook', 'LineController@event');
+Route::resource('/article', 'ArticleController')->middleware('auth');
+Route::resource('/article', 'ArticleController')->middleware('auth')->middleware('blogger')->only('create', 'store', 'edit', 'update');
 
-
-
-Route::resource('/article', 'ArticleController')->middleware('guest');
 Route::post('/article/{article}/comment', 'CommentController@store');
+
 Route::delete('/article/{article}/comment/{comment}', 'CommentController@destroy');
+
+Route::get('/article/month/{month}', 'MonthController@show');
+
 Route::get('/search', 'SearchController@index');
+
 Route::get('/category', 'CategoryController@index');
 
 Auth::routes();

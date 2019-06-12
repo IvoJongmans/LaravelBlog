@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -43,9 +45,78 @@
         }
 });
     </script>
+    {{-- <script>
+         
+
+        $(document).ready(function(){
+            
+            $('#sportContent').hide();
+
+            $('#sport').change(function(){
+                if(this.checked) {
+                    $('#allContent').hide();
+                    $('#sportContent').show();  
+                }
+                else {
+                    $('#allContent').show();
+                    $('#sportContent').hide(); 
+                }
+
+    });
+
+    
+    
+        });
+    </script> --}}
 </head>
-<body>
-        <a href="{{ url('/logout') }}"> logout </a>
+<style>
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #42275a, #734b6d) no-repeat center center fixed;
+      color: white;
+    }  
+
+    a {
+        color:white;
+    }
+
+    a:hover {
+        color: yellow;
+    }
+
+    h1 {
+        font-family: 'Monoton', cursive;
+        color: white;
+    }
+
+    .button {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        border-radius: 10px
+    }
+
+    .button:hover {
+        color: yellow;
+    }
+      
+</style>
+
+<body>   
+            
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                <a href="{{ url('/logout') }}"><button class="button" type="button">LOGOUT</button></a>
+                @if(auth()->user()->usertype == 'blogger')
+                <a href="article/create"><button class="button" type="button">CREATE ENTRY</button></a>
+                @endif
+            </div>
+        </div>
+    </div>       
+
     @yield('content')
+
 </body>
 </html>

@@ -8,12 +8,11 @@
 
 <a href="/article"><button>Back To Home</button></a>
 
-{{-- @if(auth()->user()->id == 1) --}}
+@if((auth()->user()->usertype == 'blogger') && ($article->user_id == Auth::user()->id) )
 
     <a href="/article/{{$article->id}}/edit"><button>EDIT</button></a>
 
-{{-- @endif --}}
-
+@endif
 
 <p>{!!$article->blog_body!!}</p>
 
@@ -23,6 +22,14 @@
 
 <p>{{$article->created_at}}</p>
 
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach ($article->categories as $title)
+            #{{$title->title}}
+        @endforeach
+    </div>
 </div>
 
 @if($article->blog_allow_comments === 1)

@@ -2,6 +2,8 @@
 
 @section('content')
 
+<a href="/article"><button>Back To Home</button></a>
+
 
 <form action="/article/{{$article->id}}" method="POST">
     @csrf
