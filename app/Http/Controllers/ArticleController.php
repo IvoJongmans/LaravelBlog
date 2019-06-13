@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Article;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use App\Notifications\SubscribeMail;
 
 class ArticleController extends Controller
 {
@@ -66,8 +68,13 @@ class ArticleController extends Controller
     public function create()
     {
         $allCategories = Category::all();
-        
+        if(Auth::user()->articles()->count() >= 3) {
+            return view('article.subscribe');
+        }
+        else {            
         return view('article.create_blog', compact('allCategories'));
+        }
+
     }
 
 
@@ -79,6 +86,22 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        // $user = Auth::user();
+        // $user->email = Auth::user()->email;   // This is the email you want to send to.
+        // $user->notify(new SubscribeMail());
+        if(Auth::user()->articles()->count() >= 5) {
+            return view('article.subscribe');
+        }
+        else{
+        // $count = Auth::user()->articles()->count();
+        // $id = Auth::user()->id;
+        
+        // $newcount = $count + 1;
+        // Auth::user()->blog_count->update('blog_count', $newcount);
+
+        // Auth::user()->where('id', $id)->update(array('blog_count' => $newcount));
+
+
         $categories = $request->categories;
         // dd($categories);
         $originalFile = '';
@@ -106,50 +129,8 @@ class ArticleController extends Controller
        
         $article->categories()->attach($category);
 
-        
-
-    //code for making a new article
-    // $userId = Auth::id();
-      
-    // $attributes = request()->validate([
-    //     'blog_title' => ['required', 'min:3'],
-    //     'blog_body' => ['required', 'min:3'],  
-    //     'blog_allow_comments' => ['required']       
-    // ]);
-
-    // $file = $request->file('blog_image');
-    // $destinationPath = 'img/';
-    // $originalFile = $file->getClientOriginalName();
-    // $file->move($destinationPath, $originalFile);
-
-    // $path = $request->blog_image_path->store('blog_images');
-
-    // $attributes += ['blog_image' => $originalFile, 'user_id' => $userId];
-
-
-    // $catId = Article::create($attributes);  
-
-   
-
-    // $catarr = $request->categories;
-
-
-    //     $catatt = ['article_id' => $catId->id];
-
-    //     if (in_array("sport", $catarr)) {
-    //         $catatt +=['sport' => 1];
-    //     }
-    //     if (in_array("food", $catarr)) {
-    //         $catatt +=['food' => 1];
-    //     }
-    //     if (in_array("leisure", $catarr)) {
-    //         $catatt +=['leisure' => 1];
-    //     }
-
-    // Category::create($catatt);
-
-    return redirect('/article');  
-
+        return redirect('/article');  
+        }
     }
 
     /**

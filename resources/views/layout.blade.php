@@ -110,7 +110,7 @@
             <div class="col-sm-12 text-right">
                 <a href="{{ url('/logout') }}"><button class="button" type="button">LOGOUT</button></a>
                 @if(auth()->user()->usertype == 'blogger')
-                <a href="article/create"><button class="button" type="button">CREATE ENTRY</button></a>
+                <a href="/article/create"><button class="button" type="button">CREATE ENTRY</button></a>
                 @endif
             </div>
         </div>

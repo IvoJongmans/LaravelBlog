@@ -24,9 +24,11 @@
                     {!!$blog->blog_body!!}
                 </div>
                 
+                @if($blog->blog_image != '')
                 <div class="pull-left">
                     <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;">
                 </div>
+                @endif
             </div>
     
             </div>

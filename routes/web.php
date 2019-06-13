@@ -33,8 +33,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/subscribe', 'SubscribeController@index');
+
+Route::post('/stripe/webhook', 'StripeWebhookController@handle');
+
 //logout Route that I use in layout.blade.php
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+Route::get('/stripe', 'StripePaymentController@stripe')->middleware('auth');
+
+Route::post('/stripe', 'StripePaymentController@stripePost')->name('stripe.post')->middleware('auth');
 
 
 

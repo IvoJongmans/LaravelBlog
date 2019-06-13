@@ -4,21 +4,23 @@
 
 <div class="container">
 
-<h2>{{$article->blog_title}}</h2>
-
-<a href="/article"><button>Back To Home</button></a>
+<a href="/article"><button class="button">Back To Home</button></a>
 
 @if((auth()->user()->usertype == 'blogger') && ($article->user_id == Auth::user()->id) )
 
-    <a href="/article/{{$article->id}}/edit"><button>EDIT</button></a>
+    <a href="/article/{{$article->id}}/edit"><button class="button">EDIT</button></a>
 
 @endif
 
+<h2>{{$article->blog_title}}</h2>
+
 <p>{!!$article->blog_body!!}</p>
 
-<div class="text-center">
+@if($article->blog_image != '')
+<div class="pull-left">
     <img src="{{ asset('img/'.$article->blog_image) }}" style="max-width:200px;">
 </div>
+@endif
 
 <p>{{$article->created_at}}</p>
 
@@ -27,7 +29,10 @@
 <div class="container">
     <div class="row">
         @foreach ($article->categories as $title)
-            #{{$title->title}}
+
+            <div class="col-sm-2">
+            	#{{$title->title}}
+            </div>
         @endforeach
     </div>
 </div>
@@ -42,9 +47,9 @@
 
     @foreach($article->comments as $comment)
 
-        <li style="padding:25px;list-style-type:none;border-top:3px solid black;">{!!$comment->blog_comment!!}
+        <li style="padding:25px;list-style-type:none;border-top:3px solid white;">{!!$comment->blog_comment!!}
         
-        {{-- @if(auth()->user()->id == 1) --}}
+        @if((auth()->user()->usertype == 'blogger') && ($article->user_id == Auth::user()->id) )
 
         <form method="POST" action="/article/{{$article->id}}/comment/{{$comment->id}}">
             @csrf
@@ -52,7 +57,7 @@
             <button type="submit">DELETE COMMENT</button>
         </form>
         
-        {{-- @endif --}}
+        @endif
         
         </li>
 
