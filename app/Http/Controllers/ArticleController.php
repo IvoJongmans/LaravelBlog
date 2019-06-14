@@ -68,7 +68,7 @@ class ArticleController extends Controller
     public function create()
     {
         $allCategories = Category::all();
-        if(Auth::user()->articles()->count() >= 3) {
+        if(Auth::user()->articles()->count() >= 1) {
             return view('article.subscribe');
         }
         else {            
@@ -89,7 +89,7 @@ class ArticleController extends Controller
         // $user = Auth::user();
         // $user->email = Auth::user()->email;   // This is the email you want to send to.
         // $user->notify(new SubscribeMail());
-        if(Auth::user()->articles()->count() >= 5) {
+        if(Auth::user()->articles()->count() >= 1) {
             return view('article.subscribe');
         }
         else{

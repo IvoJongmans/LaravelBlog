@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/linehook',
-        '/stripe/webhook'
+        '/stripe/webhook',
+        'https://pictor.serveo.net/stripe/webhook'
     ];
 }

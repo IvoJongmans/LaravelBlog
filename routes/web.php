@@ -45,5 +45,7 @@ Route::get('/stripe', 'StripePaymentController@stripe')->middleware('auth');
 
 Route::post('/stripe', 'StripePaymentController@stripePost')->name('stripe.post')->middleware('auth');
 
+Route::get('/addPaymentMethod', 'AddPaymentController@index');
+
 
 

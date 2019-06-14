@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Stripe;
 
 class RegisterController extends Controller
 {
@@ -63,11 +64,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $customer = Stripe\Customer::create([
+            "name" => $data['name'],
+            "email" => $data['email'],
+          ]);
+
+        // dd($customer->id);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'usertype'=> $data['usertype'],
             'password' => Hash::make($data['password']),
+            'stripe_id' => $customer->id
+            
         ]);
     }
 }

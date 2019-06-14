@@ -9,5 +9,6 @@
 
 <div class="text-center">
     <a href="/stripe"><button class="button">Pay!</button></a>
+    <a href="/addPaymentMethod"><button class="button">Add Payment Method</button></a>
 </div>
 @endsection

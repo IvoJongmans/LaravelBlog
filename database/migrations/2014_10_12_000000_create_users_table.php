@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('usertype');
             $table->string('subscription')->default('free');
+            $table->string('stripe_id');
             $table->rememberToken();
             $table->timestamps();
         });
