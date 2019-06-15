@@ -21,6 +21,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/linehook',
         '/stripe/webhook',
-        'https://pictor.serveo.net/stripe/webhook'
+        'https://pictor.serveo.net/stripe/webhook',
+        '/password/email',
+        '/password/reset'
     ];
 }

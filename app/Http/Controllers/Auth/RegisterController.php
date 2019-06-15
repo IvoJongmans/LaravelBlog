@@ -64,7 +64,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Stripe::setApiKey('sk_test_PTJVEcRxvyPpiuqtrhdPH6KW00IsgKLAms');
 
         $customer = Stripe\Customer::create([
             "name" => $data['name'],
