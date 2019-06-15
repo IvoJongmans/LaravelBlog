@@ -6,7 +6,6 @@
 
     <form method="POST" action="/article" enctype="multipart/form-data">
         @csrf
-
         <div>
             <input type="text" name="blog_title" placeholder="Title" class="@error('blog_title') is-invalid @enderror">
         </div>
