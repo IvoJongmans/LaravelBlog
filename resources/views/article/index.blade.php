@@ -94,8 +94,8 @@
 
 @foreach($allBlogs as $blog)
     
-        <div class= "mx-auto my-3" style="border:1px solid white; width:350px; height:500px; overflow:hidden;" >
-            <a href="article/{{$blog->id}}" class="text-center"><h2 style="padding:15px;">{{$blog->blog_title}}</h2></a>   
+        <div class= "mx-auto my-3" style="border:5px solid white; width:350px; max-height:500px; overflow:hidden;border-radius:10px;" >
+            <a href="article/{{$blog->id}}"><h2 style="padding:15px;">{{$blog->blog_title}}</h2></a>   
             
         @if($blog->blog_image != '')
             

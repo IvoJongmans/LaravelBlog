@@ -10,6 +10,11 @@
         <div>
             <input type="text" name="blog_title" placeholder="Title">
         </div>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        @endif
         <div>
             <textarea name="blog_body" class="tiny-mce" id="editor1"></textarea>
         </div>

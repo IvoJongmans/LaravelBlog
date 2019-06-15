@@ -32,7 +32,7 @@ class ArticleController extends Controller
     public function create()
     {
         $allCategories = Category::all();
-        if((Auth::user()->articles()->count() >= 1) && (Auth::user()->subscription == 'free')) {
+        if((Auth::user()->articles()->count() >= 3) && (Auth::user()->subscription == 'free')) {
             return view('article.subscribe');
         }
         else {            
@@ -47,26 +47,37 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        if((Auth::user()->articles()->count() >= 1) && (Auth::user()->subscription == 'free')) {
+        if((Auth::user()->articles()->count() >= 3) && (Auth::user()->subscription == 'free')) {
             return view('article.subscribe');
         }
         else {
 
         $categories = $request->categories;
-        $originalFile = '';
+
+        $uniqueFileName = '';
         $file = $request->file('blog_image');
         $destinationPath = 'img/';
         if ($request->hasFile('blog_image')) {
-            $originalFile = $file->getClientOriginalName();
-            $file->move($destinationPath, $originalFile);
+            $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $fileExtension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+            $uniqueFileName = $fileName.time().'.'.$fileExtension;
+            // dd($uniqueFileName);
+            // $originalFile = $file->getClientOriginalName();
+            $file->move($destinationPath, $uniqueFileName);
         }
 
         $article = new Article;
-        $article->blog_title = $request->blog_title;
-        $article->blog_body = $request->blog_body;
-        $article->blog_allow_comments = $request->blog_allow_comments;
+        $validatedData = $request->validate([
+            'blog_title' => 'required',
+            'blog_body' => 'required',
+            'blog_allow_comments' => 'required',
+        ]);
+        // $article->blog_title = $request->blog_title;
+        // $article->blog_body = $request->blog_body;
+        // $article->blog_allow_comments = $request->blog_allow_comments;
+        $article->fill($validatedData);
         $article->user_id = Auth::id();
-        $article->blog_image = $originalFile;
+        $article->blog_image = $uniqueFileName;
 
         $article->save();
 
