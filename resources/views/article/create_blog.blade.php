@@ -14,8 +14,11 @@
             {{ $message }}
         @enderror
         <div>
-            <textarea name="blog_body" class="tiny-mce" id="editor1"></textarea>
+            <textarea name="blog_body" class="tiny-mce" id="editor1" class="@error('blog_body') is-invalid @enderror"></textarea>
         </div>
+        @error('blog_body')
+            {{ $message }}
+        @enderror
         <div>
             <input type="file" name="blog_image">
         </div>
