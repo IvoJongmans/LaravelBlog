@@ -8,13 +8,11 @@
         @csrf
 
         <div>
-            <input type="text" name="blog_title" placeholder="Title">
+            <input type="text" name="blog_title" placeholder="Title" class="@error('blog_title') is-invalid @enderror">
         </div>
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        @endif
+        @error('blog_title')
+            {{ $message }}
+        @enderror
         <div>
             <textarea name="blog_body" class="tiny-mce" id="editor1"></textarea>
         </div>
