@@ -18,44 +18,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-
         $allBlogs = Article::all()->sortByDesc('created_at');
         $allCategories = Category::all();
-
-        // $allSports = Article::whereHas('categories', function ($query) {
-        //             $query->where('sport', '=', 1);
-        //             })->get();
-        // $allSportsFood = Article::whereHas('categories', function ($query) {
-        //             $query->where([['sport', '=', 1], ['food', '=', 1]]);
-        //             })->get();
-        // $allSportsLeisure = Article::whereHas('categories', function ($query) {
-        //             $query->where([['sport', '=', 1], ['leisure', '=', 1]]);
-        //             })->get();
-
-        // $allFood = Article::whereHas('categories', function ($query) {
-        //             $query->where('food', '=', 1);
-        //             })->get();
-        // $allFoodSports = Article::whereHas('categories', function ($query) {
-        //             $query->where([['food', '=', 1], ['sport', '=', 1]]);
-        //             })->get();
-        // $allFoodLeisure = Article::whereHas('categories', function ($query) {
-        //             $query->where([['food', '=', 1], ['leisure', '=', 1]]);
-        //             })->get();
-
-
-        // $allLeisure = Article::whereHas('categories', function ($query) {
-        //             $query->where('leisure', '=', 1);
-        //             })->get();
-        //  $allLeisureSport = Article::whereHas('categories', function ($query) {
-        //             $query->where([['leisure', '=', 1], ['sport', '=', 1]]);
-        //             })->get();
-        //  $allLeisureFood = Article::whereHas('categories', function ($query) {
-        //             $query->where([['leisure', '=', 1], ['food', '=', 1]]);
-        //             })->get();
-
-        // $allSportsCount = $allSports->count();
-        // $allFoodCount = $allFood->count();
-        // $allLeisureCount = $allLeisure->count();
 
         return view('article.index', compact('allBlogs', 'allCategories'));
     }
@@ -68,16 +32,13 @@ class ArticleController extends Controller
     public function create()
     {
         $allCategories = Category::all();
-        if(Auth::user()->articles()->count() >= 1) {
+        if((Auth::user()->articles()->count() >= 1) && (Auth::user()->subscription == 'free')) {
             return view('article.subscribe');
         }
         else {            
         return view('article.create_blog', compact('allCategories'));
         }
-
     }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -86,24 +47,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        // $user = Auth::user();
-        // $user->email = Auth::user()->email;   // This is the email you want to send to.
-        // $user->notify(new SubscribeMail());
-        if(Auth::user()->articles()->count() >= 1) {
+        if((Auth::user()->articles()->count() >= 1) && (Auth::user()->subscription == 'free')) {
             return view('article.subscribe');
         }
-        else{
-        // $count = Auth::user()->articles()->count();
-        // $id = Auth::user()->id;
-        
-        // $newcount = $count + 1;
-        // Auth::user()->blog_count->update('blog_count', $newcount);
-
-        // Auth::user()->where('id', $id)->update(array('blog_count' => $newcount));
-
+        else {
 
         $categories = $request->categories;
-        // dd($categories);
         $originalFile = '';
         $file = $request->file('blog_image');
         $destinationPath = 'img/';
@@ -111,10 +60,6 @@ class ArticleController extends Controller
             $originalFile = $file->getClientOriginalName();
             $file->move($destinationPath, $originalFile);
         }
-        // $originalFile = $file->getClientOriginalName();
-        // $file->move($destinationPath, $originalFile);
-
-        // $path = $request->blog_image_path->store('blog_images');
 
         $article = new Article;
         $article->blog_title = $request->blog_title;

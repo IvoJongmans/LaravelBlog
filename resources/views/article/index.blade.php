@@ -92,11 +92,7 @@
 
 <div id="allContent" class="container d-flex flex-wrap p-2">
 
-
-
 @foreach($allBlogs as $blog)
-
-
     
         <div class= "mx-auto my-3" style="border:1px solid white; width:350px; height:500px; overflow:hidden;" >
             <a href="article/{{$blog->id}}" class="text-center"><h2 style="padding:15px;">{{$blog->blog_title}}</h2></a>   
@@ -124,5 +120,9 @@
 @endforeach
 
 </div>
+
+@if(session('succes'))
+    {{session('succes')}}
+@endif
     
 @endsection

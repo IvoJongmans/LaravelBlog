@@ -4,11 +4,24 @@
 
 <h1 class="text-center">SUBSCRIBE!</h1>
     
-<p class="text-center" style="padding:30px;">You've reached the maximum amount of free blog posts!:( 
-     Please click the button below to subscribe to our paid platform.</p>
+<p class="text-center" style="padding:30px;">You've reached the maximum amount of free blog posts!:(</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4" style="border:1px solid white;height:250px;">
+            <p class="text-center" style="padding:20px;">Go premium!</p>
+            <h2 class="text-center" style="padding:20px;">€4.99 p/m</h2>
+            <p class="text-center" style="padding:20px;">- Unlimited blog posts!</p>
+        </div>
+    </div>
+</div>
 
 <div class="text-center">
-    <a href="/stripe"><button class="button">Pay!</button></a>
-    <a href="/addPaymentMethod"><button class="button">Add Payment Method</button></a>
+    @if(Auth::user()->payment_method == 'set')
+    <a href="/stripe" ><button class="button" style="margin:20px;">Pay!</button></a>
+    @endif
+    @if(Auth::user()->payment_method == 'not_set')
+    <a href="/addPaymentMethod"><button class="button" style="margin:20px;">Add Payment Method</button></a>
+    @endif
 </div>
 @endsection

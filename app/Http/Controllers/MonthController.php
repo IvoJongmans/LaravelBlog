@@ -8,22 +8,6 @@ use App\Article;
 class MonthController extends Controller
 {
     public function show($key){
-        // $allSports = Article::whereHas('categories', function ($query) {
-        //     $query->where('sport', '=', 1);
-        //     })->get();
-
-        // $allFood = Article::whereHas('categories', function ($query) {
-        //     $query->where('food', '=', 1);
-        //     })->get();
-        
-        // $allLeisure = Article::whereHas('categories', function ($query) {
-        //     $query->where('leisure', '=', 1);
-        //     })->get();
-
-
-        // $allSportsCount = $allSports->count();
-        // $allFoodCount = $allFood->count();
-        // $allLeisureCount = $allLeisure->count();
 
         switch ($key) {
             case 1:

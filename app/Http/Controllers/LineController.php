@@ -40,10 +40,8 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
 			$message = "Hallo Gorilla";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();		
 		}
-
 
 	   if(strtolower($userMessage) == 'blog')
 		{
@@ -57,24 +55,13 @@ $signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();		
 		}
 
-
      if(strtolower($userMessage) == 'sticker')
 		{
 	
             $mysticker = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder("11538", "51626501");
 			$result = $bot->replyMessage($event['replyToken'], $mysticker);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();		
 		}
-
-
-
-
-
-
-	}
-
-
-   
+	}   
 }
 }

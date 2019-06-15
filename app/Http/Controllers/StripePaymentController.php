@@ -26,15 +26,8 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
-        // $user_id = Auth::id();
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // Stripe\Charge::create ([
-        //         "amount" => 100 * 100,
-        //         "currency" => "usd",
-        //         "source" => $request->stripeToken,
-        //         "description" => "Test payment from itsolutionstuff.com.",
-        //         "metadata" => ['user_id' => $user_id]
-        // ]);
+        
         $customer_id = Auth::user()->stripe_id;
 
         \Stripe\Subscription::create([
@@ -46,8 +39,8 @@ class StripePaymentController extends Controller
             ]
           ]);
   
-        Session::flash('success', 'Payment successful!');
+        session()->flash('succes', 'Payment succesfull!');
           
-        // return back();
+        return redirect('/article');
     }
 }

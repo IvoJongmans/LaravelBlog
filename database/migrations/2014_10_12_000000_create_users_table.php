@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('usertype');
             $table->string('subscription')->default('free');
             $table->string('stripe_id');
+            $table->string('payment_method')->default('not_set');
             $table->rememberToken();
             $table->timestamps();
         });

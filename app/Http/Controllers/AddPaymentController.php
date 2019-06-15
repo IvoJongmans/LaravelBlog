@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Stripe;
 use Auth;   
+use App\User;
 
 class AddPaymentController extends Controller
 {
     public function index(){
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        // $customer= \Stripe\Customer::retrieve('cus_FFgs4n1MQc55DC');
         $customer_id = Auth::user()->stripe_id;
         Stripe\Customer::createSource(
             $customer_id,
@@ -20,6 +19,8 @@ class AddPaymentController extends Controller
               'source' => 'tok_visa',
             ]
           );
+      
+          User::where('stripe_id', $customer_id)->update(array('payment_method' => 'set'));
 
         return view('article.addpayment');
     }
