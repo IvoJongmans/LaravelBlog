@@ -3,14 +3,9 @@
 use Illuminate\Support\Str;
 
 
-$url = parse_url(getenv("DATABASE_URL"));
+$heroku_db_url = parse_url(env('DATABASE_URL', "postgres://nozbrnwaouxexg:20628065e169943178acedeebf88be0df74585124b438865a848a565703de3cb@ec2-54-83-201-84.compute-1.amazonaws.com:5432/d3tmenh5hd28j5
+"));
 
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-$port = $url["port"];
-$scheme = $url["scheme"];
 return [
 
     /*
@@ -24,7 +19,7 @@ return [
     |
     */
 
-    'default' => $scheme,
+    'default' => env('DB_CONNECTION', 'mysql'),
     
     /*
     |--------------------------------------------------------------------------
@@ -44,6 +39,17 @@ return [
 
     'connections' => [
 
+        'pg-heroku' => [
+            'driver'   => 'pgsql',
+            'host'     => $heroku_db_url['host'],
+            'database' => substr($heroku_db_url['path'], 1),
+            'username' => $heroku_db_url['user'],
+            'password' => $heroku_db_url['pass'],
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -55,11 +61,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => $host,
-            'port' => $port,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -72,16 +78,20 @@ return [
             ]) : [],
         ],
 
-        'pgsql' => array(
-            'driver'   => 'pgsql',
-            'host'     => $host,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
-        ),
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
