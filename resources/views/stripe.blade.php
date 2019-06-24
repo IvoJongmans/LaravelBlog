@@ -50,7 +50,7 @@
   
                     <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
                                                      data-cc-on-file="false"
-                                                    data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                                                    data-stripe-publishable-key="pk_test_9GgUgNx8TfFAFPLEQWW5P4Hw00qF0wNQYJ"
                                                     id="payment-form">
                         @csrf
   
