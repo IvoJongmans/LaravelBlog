@@ -4,9 +4,15 @@
 
 <h1 class="text-center">Add Payment</h1>
 
-    Visa
+    <div class="container">
 
-    <a href="/subscribe">Add</a>
+        <div class="text-center">
+
+                <a href="/subscribe"><img src="/img/visa.png" style="width:150px;"></a>        
+            
+        </div>
+        
+    </div>
     
 
 @endsection

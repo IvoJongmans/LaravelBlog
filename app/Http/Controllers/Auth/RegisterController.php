@@ -71,7 +71,6 @@ class RegisterController extends Controller
             "email" => $data['email'],
           ]);
 
-        // dd($customer->id);
 
         return User::create([
             'name' => $data['name'],

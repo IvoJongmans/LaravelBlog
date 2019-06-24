@@ -12,19 +12,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        App\User::insert([
-            'name' => 'blogger',
-            'email' => 'blogger@gmail.com',
-            'password' => bcrypt('demodemo'),
-            'usertype' => 'blogger'
-        ]);
+        // App\User::insert([
+        //     'name' => 'blogger',
+        //     'email' => 'blogger@gmail.com',
+        //     'password' => bcrypt('demodemo'),
+        //     'usertype' => 'blogger',
+        //     'stripe_id' => 'cus-123'
+        // ]);
 
-        App\User::insert([
-            'name' => 'reader',
-            'email' => 'reader@gmail.com',
-            'password' => bcrypt('demodemo'),
-            'usertype' => 'reader'
-        ]);
+        // App\User::insert([
+        //     'name' => 'reader',
+        //     'email' => 'reader@gmail.com',
+        //     'password' => bcrypt('demodemo'),
+        //     'usertype' => 'reader',
+        //     'stripe_id' => 'cus-123'
+        // ]);
 
         App\Article::insert([
             'user_id' => 1,
@@ -36,7 +38,7 @@ class DatabaseSeeder extends Seeder
             Affronting imprudence do he he everything. Sex lasted dinner wanted indeed wished out law. Far advanced settling say finished raillery. Offered chiefly farther of my no colonel shyness. Such on help ye some door if in. Laughter proposal laughing any son law consider. Needed except up piqued an. 
             
             Much evil soon high in hope do view. Out may few northward believing attempted. Yet timed being songs marry one defer men our. Although finished blessing do of. Consider speaking me prospect whatever if. Ten nearer rather hunted six parish indeed number. Allowance repulsive sex may contained can set suspected abilities cordially. Do part am he high rest that. So fruit to ready it being views match. ',
-            'blog_image' => 'food.jfif',
+            'blog_image' => '',
             'blog_allow_comments' => 1,
             'created_at' => Carbon::create('2019', '06', '06'),
             'updated_at' => Carbon::create('2019', '07', '07')
@@ -52,7 +54,7 @@ class DatabaseSeeder extends Seeder
             Affronting imprudence do he he everything. Sex lasted dinner wanted indeed wished out law. Far advanced settling say finished raillery. Offered chiefly farther of my no colonel shyness. Such on help ye some door if in. Laughter proposal laughing any son law consider. Needed except up piqued an. 
             
             Much evil soon high in hope do view. Out may few northward believing attempted. Yet timed being songs marry one defer men our. Although finished blessing do of. Consider speaking me prospect whatever if. Ten nearer rather hunted six parish indeed number. Allowance repulsive sex may contained can set suspected abilities cordially. Do part am he high rest that. So fruit to ready it being views match. ',
-            'blog_image' => 'food.jfif',
+            'blog_image' => '',
             'blog_allow_comments' => 1,
             'created_at' => Carbon::create('2019', '06', '06'),
             'updated_at' => Carbon::create('2019', '07', '07')
@@ -68,7 +70,7 @@ class DatabaseSeeder extends Seeder
             Affronting imprudence do he he everything. Sex lasted dinner wanted indeed wished out law. Far advanced settling say finished raillery. Offered chiefly farther of my no colonel shyness. Such on help ye some door if in. Laughter proposal laughing any son law consider. Needed except up piqued an. 
             
             Much evil soon high in hope do view. Out may few northward believing attempted. Yet timed being songs marry one defer men our. Although finished blessing do of. Consider speaking me prospect whatever if. Ten nearer rather hunted six parish indeed number. Allowance repulsive sex may contained can set suspected abilities cordially. Do part am he high rest that. So fruit to ready it being views match. ',
-            'blog_image' => 'food.jfif',
+            'blog_image' => '',
             'blog_allow_comments' => 1,
             'created_at' => Carbon::create('2019', '06', '06'),
             'updated_at' => Carbon::create('2019', '07', '07')
@@ -97,8 +99,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('article_category')->insert([
-            'article_id' => '2',
-            'category_id' => '2'
+            'article_id' => '3',
+            'category_id' => '3'
         ]);
     }
 }

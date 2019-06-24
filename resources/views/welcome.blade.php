@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +15,16 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                font-family: 'Playfair Display', serif;
+                background-color: #f9f7f1;
+                color: black;
+            }
+
+            .button {
+                background-color: transparent;
+                color: black;
+                border: 1px solid black;
+                border-radius: 10px
             }
 
             .full-height {
@@ -61,39 +68,67 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            #text {
+                color: yellow;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        
             @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
+                
+                    <div class="container text-right">
+                    	@auth
+                    	    <a href="{{ url('/home') }}"><button class="button" type="button">Home</button></a>
+                    	@else
+                    	    <a href="{{ route('login') }}"><button class="button" type="button">Login</button></a>
+                    
+                    	    @if (Route::has('register'))
+                    	        <a href="{{ route('register') }}"><button class="button" type="button">Register</button></a>
+                    	    @endif
+                    	@endauth
+                    </div>
+                
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+            <div class="container" style="padding:15px;">
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <h1 class="text-center"><b>Welcome to Ivo's blog!</b></h1>
+                <p class="text-center">Please login or register to read the full blog.</p>
+                    
             </div>
-        </div>
+
+            <div id="allContent" class="container d-flex flex-wrap p-2">
+
+                    @foreach($allBlogs as $blog)
+                        
+                            <div class= "mx-auto my-3 blogpost" style="width:350px; max-height:240px; overflow:hidden;" >
+                                <a href="article/{{$blog->id}}"><h2 style="padding:15px;"><b>{{$blog->blog_title}}</b></h2></a>   
+                                
+                            @if($blog->blog_image != '')
+                                
+                            <div class="text-center">
+                                <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;filter:grayscale(100%)">
+                            </div>
+                            
+                            @endif
+                                    
+                            <div style="padding:15px;" class="home_blog_text">
+                            {!!$blog->blog_body!!}
+                            </div>
+                                {{-- @if($blog->blog_image != '')
+                                
+                                    <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;">
+                                
+                                @endif --}}
+                            </div>   
+                        
+                        
+                    @endforeach
+                    
+                    </div>
+            
+       
     </body>
 </html>

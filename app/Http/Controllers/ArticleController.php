@@ -20,8 +20,9 @@ class ArticleController extends Controller
     {
         $allBlogs = Article::all()->sortByDesc('created_at');
         $allCategories = Category::all();
+        $currentUser = Auth::user();
 
-        return view('article.index', compact('allBlogs', 'allCategories'));
+        return view('article.index', compact('allBlogs', 'allCategories', 'currentUser'));
     }
 
     /**
@@ -32,7 +33,7 @@ class ArticleController extends Controller
     public function create()
     {
         $allCategories = Category::all();
-        if((Auth::user()->articles()->count() >= 3) && (Auth::user()->subscription == 'free')) {
+        if((Auth::user()->articles()->count() >= 1) && (Auth::user()->subscription == 'free')) {
             return view('article.subscribe');
         }
         else {            
@@ -47,7 +48,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        if((Auth::user()->articles()->count() >= 3) && (Auth::user()->subscription == 'free')) {
+        if((Auth::user()->articles()->count() >= 1) && (Auth::user()->subscription == 'free')) {
             return view('article.subscribe');
         }
         else {

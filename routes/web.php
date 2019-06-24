@@ -1,5 +1,7 @@
 <?php
 
+use App\Article;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $allBlogs = Article::orderBy('id', 'desc')->take(3)->get();
+    return view('welcome', compact('allBlogs'));
 });
 
 Route::post('/linehook', 'LineController@event');
@@ -36,6 +39,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/subscribe', 'SubscribeController@index');
 
 Route::post('/stripe/webhook', 'StripeWebhookController@handle');
+
+Route::get('/user/{user}', 'UserController@show');
+
+Route::get('/verify', 'VerifyController@index');
 
 //logout Route that I use in layout.blade.php
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

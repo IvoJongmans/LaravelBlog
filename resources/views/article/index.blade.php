@@ -1,25 +1,18 @@
 @extends('layout')
 
+@section('username')
+<a href="/user/{{$currentUser->id}}"><button class="button" type="button">{{$currentUser->name}}</button></a>
+@endsection
+
 @section('content')
 
-{{-- @if(auth()->user()->usertype == 'blogger')
-
-
-    <div class="col-sm-6">
-        <a href="article/create"><button type="button">CREATE ENTRY</button></a>
-    </div>
-</div>
-{{ Auth::user()->id }}
-
-@endif --}}
-
 <div class="container" style="padding:15px;">
 
-<h1 class="text-center">Welcome to Ivo's blog!</h1>
+<h1 class="text-center"><b>Welcome to Ivo's blog!</b></h1>
 
 </div>
 
-<div class="container" style="padding:15px;">
+<div class="container" style="padding:15px;border-top:3px solid black">
 
     {{-- <div class="row"> --}}
         <form action="category" method="GET" class="row text-center">
@@ -40,7 +33,7 @@
     </div>
 
 
-<div class="container" style="padding-bottom:15px;">
+<div class="container" style="padding:15px;border-top:3px solid black">
     <div class="row">
         <div class="col-sm-1">
             <a href="article/month/1">Jan</a>
@@ -81,10 +74,10 @@
     </div>
 </div>
 
-<div class="container" style="padding:15px;">    
+<div class="container" style="padding:15px;border-top:3px solid black;border-bottom:3px solid black">    
         <div class="text-center">
             <form action="search" method="GET">
-                <input type="text" name="search_input" placeholder="Search...">
+                <input type="text" name="search_input" placeholder="Search..." style="border:1px solid black;border-radius:10px;">
                 <button class="button" type="submit">Search!</button>
             </form>
         </div>    
@@ -94,13 +87,13 @@
 
 @foreach($allBlogs as $blog)
     
-        <div class= "mx-auto my-3" style="border:5px solid white; width:350px; max-height:500px; overflow:hidden;border-radius:10px;" >
-            <a href="article/{{$blog->id}}"><h2 style="padding:15px;">{{$blog->blog_title}}</h2></a>   
+        <div class= "mx-auto my-3 blogpost" style="width:350px; max-height:500px; overflow:hidden;" >
+            <a href="article/{{$blog->id}}"><h2 style="padding:15px;"><b>{{$blog->blog_title}}</b></h2></a>   
             
         @if($blog->blog_image != '')
             
         <div class="text-center">
-            <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;">
+            <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;filter:grayscale(100%)">
         </div>
         
         @endif
@@ -121,8 +114,30 @@
 
 </div>
 
-@if(session('succes'))
-    {{session('succes')}}
+@if((session('succes')) && ($currentUser->subscription == 'premium'))
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#popupmodal').modal();
+    });
+ </script>
+ <div id="popupmodal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document" style="background-color:#f9f7f1;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Paymnet succesful!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>You can now use all the premium features that this site has to offer! Check your account details to see your new subscription.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="button" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 @endif
     
 @endsection

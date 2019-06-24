@@ -27,15 +27,18 @@
             No: <input type="radio" name="blog_allow_comments" value="0" checked>
             Yes: <input type="radio" name="blog_allow_comments" value="1">
         </div>
-        @foreach($allCategories as $category)
-        <div class="col-sm-4 text-center">
-            
-        <input type="checkbox" name="categories[]" value="{{$category->id}}">
-                {{$category->title}}
-                {{-- Sport({{$allSportsCount}}) --}}
-            
-        </div>
+
+        <div class="container">
+            <ul style="list-style-type:none">
+            @foreach($allCategories as $category)           
+        <li>
+            <label for="{{$category->id}}">{{$category->title}}</label>
+            <input type="checkbox" name="categories[]" value="{{$category->id}}">
+        </li>      
         @endforeach
+            </ul>
+        </div>
+
         <div>
             <button type="submit">CREATE!</button>
         </div>

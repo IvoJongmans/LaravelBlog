@@ -47,7 +47,7 @@
 
     @foreach($article->comments as $comment)
 
-        <li style="padding:25px;list-style-type:none;border-top:3px solid white;">{!!$comment->blog_comment!!}
+        <li style="padding:25px;list-style-type:none;">{!!$comment->blog_comment!!}
         
         @if((auth()->user()->usertype == 'blogger') && ($article->user_id == Auth::user()->id) )
 

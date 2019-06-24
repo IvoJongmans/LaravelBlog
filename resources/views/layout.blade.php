@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
                         textreturn = words.join(" ");
                         console.log(textreturn);
                         $(".text_expander").val(textreturn);
-                        tinyMCE.activeEditor.setContent(textreturn);
+                        tinyMCE.activeEditor.setContent(textreturn).focus();
                     }
                 }
             });
@@ -48,28 +48,45 @@
 <style>
 
     body {
-        font-family: 'Merriweather', serif;
-      background: linear-gradient(to bottom right, #2b5876, #4e4376) no-repeat center center fixed;
-      color: white;
+        font-family: 'Playfair Display', serif;
+      background-color: #f9f7f1;
+      color: black;
     }  
 
+    .blogpost {
+        border-right:1px solid black;
+        padding: 10px;
+    }
+
+    .blogpost:last-child {
+        border:none;
+    }
+
     a {
-        color:white;
+        color:black;
     }
 
     a:hover {
-        color: yellow;
+        color: black;
+        text-decoration: none;
     }
+    
 
     h1 {
-        font-family: 'Merriweather', serif;
-        color: white;
+        font-family: 'Playfair Display', serif;
+        color: black;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        border-bottom: 1px solid black;
+        width: 100%;
     }
 
     .button {
         background-color: transparent;
-        color: white;
-        border: 5px solid white;
+        color: black;
+        border: 1px solid black;
         border-radius: 10px
     }
 
@@ -88,6 +105,7 @@
                 @if(auth()->user()->usertype == 'blogger')
                 <a href="/article/create"><button class="button" type="button">CREATE ENTRY</button></a>
                 @endif
+                @yield('username')
             </div>
         </div>
     </div>       

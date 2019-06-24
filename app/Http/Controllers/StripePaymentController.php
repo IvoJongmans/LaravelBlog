@@ -41,6 +41,6 @@ class StripePaymentController extends Controller
   
         session()->flash('succes', 'Payment succesfull!');
           
-        return redirect('/article');
+        return redirect('/verify');
     }
 }

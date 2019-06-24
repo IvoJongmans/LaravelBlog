@@ -10,28 +10,27 @@
 
 @foreach($allBlogs as $blog)
 
-<div class="container">
-        <div class="row">
+<div class="container" style="padding:30px;">
+        
             <a href="/article/{{$blog->id}}"><h2>{{$blog->blog_title}}</h2></a>
-        </div>
-    </div>    
+        
+       
     
-        <div class="container">
-            <div class="row">
+        
     
-            <div class="col-sm-12">
-                <div class="pull-left">
+           
+               
                     {!!$blog->blog_body!!}
-                </div>
+                
                 
                 @if($blog->blog_image != '')
                 <div class="pull-left">
                     <img src="{{ asset('img/'.$blog->blog_image) }}" style="max-width:200px;">
                 </div>
                 @endif
-            </div>
+            
     
-            </div>
+            
         </div>
 
 @endforeach
