@@ -11,7 +11,7 @@ class AddPaymentController extends Controller
 {
     public function index(){
 
-        Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Stripe::setApiKey('sk_test_PTJVEcRxvyPpiuqtrhdPH6KW00IsgKLAms');
         $customer_id = Auth::user()->stripe_id;
         Stripe\Customer::createSource(
             $customer_id,
